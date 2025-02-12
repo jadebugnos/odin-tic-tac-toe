@@ -8,11 +8,9 @@ class Board
   end
 
   def create_blocks
-    mapped_blocks = @blocks.flat_map do |sub_arr|
-      sub_arr.map {|num| "|#{num}|" }  
+    @blocks.flat_map do |sub_arr|
+      sub_arr.map { |num| "|#{num}|" }
     end.each_slice(3).to_a
-
-    mapped_blocks
   end
 
   def display_blocks
@@ -21,7 +19,7 @@ class Board
 
   def update_board(choice)
     @blocks.flat_map do |row|
-      row.map! { |block| block == choice ? 'X' : block }
-    end 
+      row.map! { |block| block == choice ? "X" : block }
+    end
   end
 end
