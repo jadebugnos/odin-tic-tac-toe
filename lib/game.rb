@@ -3,11 +3,15 @@ class Game
 
   def initialize(choice = nil)
     @choice = choice
+    @board = Board.new
   end
 
   def start_game
     puts "lets play Tic Tac Toe"
-    @choice = self.handle_error
+    @board.display_blocks
+    @choice = handle_error
+    @board.update_board(@choice)
+    @board.display_blocks
   end
 
   private
