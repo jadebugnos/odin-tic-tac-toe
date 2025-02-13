@@ -1,10 +1,9 @@
 class Board
+  attr_accessor :combinations
+
   def initialize
-    @blocks = [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9]
-    ]
+    @blocks = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    @combinations = []
   end
 
   def create_blocks
@@ -19,7 +18,14 @@ class Board
 
   def update_board(choice)
     @blocks.flat_map do |row|
-      row.map! { |block| block == choice ? "X" : block }
+      row.map! do |block|
+        if block == choice
+          @combinations.push(block)
+          "X"
+        else
+          block
+        end
+      end
     end
   end
 end

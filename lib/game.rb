@@ -1,4 +1,5 @@
 class Game
+  include GameRules
   attr_reader :choice
 
   def initialize(board, player)
@@ -19,5 +20,9 @@ class Game
       @board.update_board(@choice)
       @board.display_blocks
     end
+  end
+
+  def check_winner
+    
   end
 end

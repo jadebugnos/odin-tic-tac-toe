@@ -10,7 +10,5 @@ class Player
     end
   end
 
-  def ai_opponent_choice
-    
-  end
+  def ai_opponent_choice; end
 end
