@@ -1,3 +1,5 @@
+# players.rb
+# this file defines the Player class which handles the player inputs
 class Player
   def handle_player_input
     loop do

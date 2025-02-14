@@ -1,3 +1,4 @@
+# rules.rb
 module GameRules
   def winning_combinations
     [
