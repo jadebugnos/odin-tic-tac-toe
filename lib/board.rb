@@ -4,8 +4,9 @@ class Board
   attr_accessor :combinations
 
   def initialize
-    @blocks = Array.new(9, " ").each_slice(3).to_a # board blocks
-    @combinations = []
+    @blocks = Array.new(9, " ").each_slice(3).to_a # makes an array with 9 items then converts it to a 2D array
+    @player_x_moves = []
+    @player_y_moves = []
   end
 
   def create_blocks
@@ -18,24 +19,15 @@ class Board
     create_blocks.each { |row| puts row.join(" ") }
   end
 
+  # this method handles the displaying of X
   def update_board(choice)
-    # @blocks.flat_map do |row|
-    #   row.map! do |block|
-    #     if block == choice
-    #       @combinations.push(choice) # collects the selected block for comparison
-    #       "X"
-    #     else
-    #       block
-    #     end
-    #   end
-    # end
     @blocks = @blocks.flatten.map.with_index do |item, index|
       if choice == index + 1
-        @combinations.push(choice)
+        @player_x_moves.push(choice)
         "X"
       else
         item
       end
-    end.each_slice(3).to_a
+    end.each_slice(3).to_a # converts the flattened array back to 2D array
   end
 end

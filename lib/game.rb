@@ -19,14 +19,16 @@ class Game
   end
 
   def run_game
-    5.times do # this is a sample loop. this still needs to be refactored to loop until a winner is declared
+    5.times do
       @choice = @player.handle_player_input
       @board.update_board(@choice)
       @board.display_blocks
     end
   end
 
-  def check_winner
-    combinations = @board.combinations
+  def check_winner(array, symbol)
+    array.any? do |combo|
+      combo.all? { |index| board[index] == symbol }
+    end
   end
 end
