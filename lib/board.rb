@@ -1,12 +1,11 @@
 # board.rb
 # this file defines the Board class which handles all the board logic for the game
 class Board
-  attr_accessor :combinations
+  attr_accessor :combinations, :blocks
 
   def initialize
     @blocks = Array.new(9, " ").each_slice(3).to_a # makes an array with 9 items then converts it to a 2D array
-    @player_x_moves = []
-    @player_y_moves = []
+    @player_moves = ["Y"] # use to check the last player who moved
   end
 
   def create_blocks
@@ -23,8 +22,13 @@ class Board
   def update_board(choice)
     @blocks = @blocks.flatten.map.with_index do |item, index|
       if choice == index + 1
-        @player_x_moves.push(choice)
-        "X"
+        if @player_moves.last == "Y"
+          @player_moves.push("X")
+          "X"
+        else
+          @player_moves.push("Y")
+          "Y"
+        end
       else
         item
       end
