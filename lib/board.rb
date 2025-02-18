@@ -15,18 +15,20 @@ class Board
   end
 
   def display_blocks
-    create_blocks.each { |row| puts row.join(" ") }
+    create_blocks.reverse.each { |row| puts row.join(" ") }
   end
 
-  # this method handles the displaying of X
+  # this method updates the board in each turn
   def update_board(choice)
     @blocks = @blocks.flatten.map.with_index do |item, index|
       if choice == index + 1
         if @player_moves.last == "Y"
           @player_moves.push("X")
+          puts "Player Y's turn"
           "X"
         else
           @player_moves.push("Y")
+          puts "Player X's turn"
           "Y"
         end
       else

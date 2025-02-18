@@ -13,7 +13,7 @@ class Game
   end
 
   def start_game
-    puts "lets play Tic Tac Toe"
+    puts "lets play Tic Tac Toe!\nUse the numpad keys 1..9 to select a cell\nplayer X takes the first move"
     @board.display_blocks
     run_game
   end
@@ -40,7 +40,18 @@ class Game
     player_x = check_winner(board, "X")
     player_y = check_winner(board, "Y")
     draw = !board.include?(" ")
-
+    declare_result(player_x, player_y, draw)
     player_x || player_y || draw
+  end
+
+  # this method will print the result of the game
+  def declare_result(player_x_won, player_y_won, draw)
+    if player_x_won
+      puts "Player X won the match!"
+    elsif player_y_won
+      puts "Player Y won the match!"
+    elsif draw
+      puts "Draw!"
+    end
   end
 end
