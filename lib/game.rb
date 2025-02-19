@@ -38,18 +38,18 @@ class Game
   def game_state(board)
     board = board.flatten
     player_x = check_winner(board, "X")
-    player_y = check_winner(board, "Y")
+    player_o = check_winner(board, "O")
     draw = !board.include?(" ")
-    declare_result(player_x, player_y, draw)
-    player_x || player_y || draw
+    declare_result(player_x, player_o, draw)
+    player_x || player_o || draw
   end
 
   # this method will print the result of the game
-  def declare_result(player_x_won, player_y_won, draw)
+  def declare_result(player_x_won, player_o_won, draw)
     if player_x_won
       puts "Player X won the match!"
-    elsif player_y_won
-      puts "Player Y won the match!"
+    elsif player_o_won
+      puts "Player O won the match!"
     elsif draw
       puts "Draw!"
     end

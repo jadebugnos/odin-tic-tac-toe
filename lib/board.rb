@@ -5,7 +5,7 @@ class Board
 
   def initialize
     @blocks = Array.new(9, " ").each_slice(3).to_a # makes an array with 9 items then converts it to a 2D array
-    @player_moves = ["Y"] # use to check the last player who moved
+    @player_moves = ["O"] # use to check the last player who moved
   end
 
   def create_blocks
@@ -22,14 +22,14 @@ class Board
   def update_board(choice)
     @blocks = @blocks.flatten.map.with_index do |item, index|
       if choice == index + 1
-        if @player_moves.last == "Y"
+        if @player_moves.last == "O"
           @player_moves.push("X")
-          puts "Player Y's turn"
+          puts "Player O's turn"
           "X"
         else
-          @player_moves.push("Y")
+          @player_moves.push("O")
           puts "Player X's turn"
-          "Y"
+          "O"
         end
       else
         item
